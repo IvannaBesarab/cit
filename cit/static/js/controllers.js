@@ -15,12 +15,19 @@ app.controller('GalleryCtrl',['$scope','$location',function($scope, $location) {
 					return $location.url(); 
 			}, 
 			function() {
-				if($location.url() == '/' || $location.path() == '/_=_') {
+				if($location.url() == '/' || $location.path() == '' ||$location.path() == '/_=_' || $location.path() == '/auth/logout/'  ) {
 					 $scope.showContext = true;
-				}
+						
+     		}
 				else
 					 $scope.showContext = false;
      		});	
+				
+
+			var host = $location.host();
+			var port = $location.port();
+			var path = $location.path();
+			console.log('hosttt', host, 'pooort', port, 'paath', typeof path);
 }]);
 
 //Get Names of organizations and from show them in profile form
